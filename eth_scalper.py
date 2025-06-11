@@ -8,7 +8,7 @@ Autor: Serge12
 """
 
 # ==================== 📦 IMPORTACIONES ====================
-import ccxt          # type: ignore # Conexión con exchanges (Binance)
+import ccxt          # Conexión con exchanges (Binance)
 import pandas as pd  # Manipulación de datos
 import time          # Control de tiempos y esperas
 from datetime import datetime  # type: ignore # Manejo de fechas/horas
@@ -28,7 +28,7 @@ class EthereumScalper:
         🔄 CAMBIA LOS PARÁMETROS DE TRADING AQUÍ:
         """
         # Configuración del exchange
-        self.exchange = ccxt.binance({ # type: ignore
+        self.exchange = ccxt.binance({
             'apiKey': api_key,
             'secret': secret_key,
             'enableRateLimit': True,
@@ -57,9 +57,9 @@ class EthereumScalper:
     def setup(self):
         """Configura el mercado y el apalancamiento"""
         try:
-            self.exchange.load_markets() # type: ignore
-            self.exchange.set_leverage(self.leverage, self.symbol) # type: ignore
-            self.exchange.set_margin_mode('cross', self.symbol) # type: ignore
+            self.exchange.load_markets()
+            self.exchange.set_leverage(self.leverage, self.symbol) 
+            self.exchange.set_margin_mode('cross', self.symbol) 
             logging.info(f"✅ Bot configurado para {self.symbol} | Apalancamiento: {self.leverage}x")
         except Exception as e:
             logging.error(f"❌ Error en configuración: {e}")
@@ -69,14 +69,14 @@ class EthereumScalper:
     def get_market_data(self):
         """Obtiene datos OHLCV del mercado"""
         try:
-            ohlcv = self.exchange.fetch_ohlcv( # type: ignore
+            ohlcv = self.exchange.fetch_ohlcv( 
                 self.symbol, 
                 self.timeframe, 
                 limit=100  # 🔄 Ajusta cantidad de velas históricas
             )
-            df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume']) # type: ignore
-            df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms') # type: ignore
-            df.set_index('timestamp', inplace=True) # type: ignore
+            df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume']) 
+            df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms') 
+            df.set_index('timestamp', inplace=True) 
             return df
         except Exception as e:
             logging.error(f"❌ Error obteniendo datos: {e}")
