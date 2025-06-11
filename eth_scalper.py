@@ -20,8 +20,8 @@ import logging             # Registro de operaciones
 
 # ==================== ⚙️ CONFIGURACIÓN ====================
 # 🔄 REEMPLAZA ESTOS VALORES CON TUS CLAVES DE BINANCE
-API_KEY = "KeowQHCd8hqKgnlBvyKGcfNVCj7xJP4nOKMqRvciI3hOMyhoB0t3skW2t266YQ3U" # Tu API Key de Binance
-API_SECRET = "VBtqL3GXKKhJ2TPMj7ElcnOuJeaI11tNgdIxtDGQWn9O5zprKqJnn6ysOm109ALr"   # Tu Secret Key de Binance
+API_KEY = "api aqui" # Tu API Key de Binance
+API_SECRET = "secret api aqui"   # Tu Secret Key de Binance
 TEST_MODE = False                    # True=Pruebas, False=Real
 
 # ==================== 🤖 CLASE PRINCIPAL ====================
